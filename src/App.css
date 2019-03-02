@@ -1,0 +1,27 @@
+.app {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app-header {
+  background-color: #282c34;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #FFE70B;
+  padding-left: 24px;
+  mix-blend-mode: hard-light;
+}
+
+.app-header > .app-icon {
+  margin-right: 20px;
+}
+
+.app-header > .app-text {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 36px;
+  color: #8F4F05;
+}
