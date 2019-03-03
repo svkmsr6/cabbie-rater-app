@@ -9,6 +9,9 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     padding-top: 35px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
 }
 
 .app-fb-form > header {
@@ -17,4 +20,72 @@
   line-height: normal;
   font-size: 36px;
   color: #8F4F05;  
+}
+
+.app-fb-form > input {
+    width:85%;
+    border: 1px solid #FEAF3A;
+    box-sizing: border-box;
+    border-radius: 17px;
+    flex: 0 0 71px;
+    margin: 35px auto 30px;
+    line-height: normal;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.app-fb-form > div.select-rate-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 71px;
+    margin: 35px auto 30px;
+    width: 85%;
+}
+
+.app-fb-form > div.select-rate-container > select {
+    flex: 0 0 42%;
+    border: 1px solid #FEAF3A;
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: 70px;
+    
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.app-fb-form > div.select-rate-container > select:focus{
+    outline: none;
+}
+
+.app-fb-form option {
+    cursor:pointer;
+    text-align: center;
+}
+
+.app-fb-form > .app-fb-btn {
+   display:flex;
+   justify-content: flex-end;
+   align-items: center;
+   width: 85%;
+   margin: 35px auto 35px;
+}
+
+.app-fb-form > .app-fb-btn > button {
+  background: #FEAF3A;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  flex: 0 0 271px;
+  font-size: 24px;
+  text-align: center;
+  color: #8F4F05;
+  font-weight: bold;
+  height: 81px;
+  border: none;
+  cursor: pointer;
+}
+
+.app-fb-form > .app-fb-btn > button:focus{
+  outline: none;
 }
