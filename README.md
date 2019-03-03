@@ -1,6 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cabbie Rater App
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It consumes the [SVK Cabbie App](https://github.com/svkmsr6/heroku-deployment) service with a simple UI based on ReactJS.
+Yet to deploy.
+
+## Directions for code and repository use
 
 In the project directory, you can run:
 
