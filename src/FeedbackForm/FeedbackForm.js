@@ -55,11 +55,12 @@ export default class FeedbackForm extends Component {
     if(!this.state.selected){
       alert('Please select a driver!')
     } else {
-     const {id, rating} = this.state.selected;
-     const newRating = parseFloat(((this.state.rating + rating)/2).toFixed(2), 10);
+     const {id, rating, rides} = this.state.selected;
+     const newRating = parseFloat(((rating*rides + this.state.rating)/(rating + 1)).toFixed(2), 10);
      const request = {
        id,
-       rating: newRating
+       rating: newRating,
+       rides: rides + 1
      }
      
      this.updateDriverRating(request)
