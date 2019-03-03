@@ -53,7 +53,11 @@ export default class FeedbackForm extends Component {
 
   submitRating(){
     if(!this.state.selected){
-      alert('Please select a driver!')
+      alert('Please select a driver!');
+    } else if(this.refs.name.value.length === 0 || this.refs.email.value.length === 0){
+      alert('Please ensure a name and an email!');
+    } else if(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(this.refs.email.value)){
+      alert('Please enter a valid email!');
     } else {
      const {id, rating, rides} = this.state.selected;
      const newRating = parseFloat(((rating*rides + this.state.rating)/(rides + 1)).toFixed(2), 10);
@@ -67,7 +71,11 @@ export default class FeedbackForm extends Component {
      .then(data => {
        console.log('Rating updated',data);
        this.getAllDrivers()
-        .then(data => this.setState({drivers: data.results}))
+        .then(data => this.setState({
+          drivers: data.results
+        },() => {
+          this.props.onSubmit()
+        }))
         .catch(err => console.log('Fetch Error',err))
       })
      .catch(err => console.log('Update Error', err))

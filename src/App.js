@@ -4,6 +4,12 @@ import FeedbackForm from './FeedbackForm/FeedbackForm';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      submitted: false
+    }
+  }
   render() {
     return (
       <div className="app">
@@ -12,7 +18,18 @@ class App extends Component {
           <img className="app-icon" src="/img/taxi_icon.png" alt="logo" />
           <span className="app-text">CABBIE RATER</span>
         </header>
-        <FeedbackForm />
+        {
+          (!this.state.submitted)?
+          <FeedbackForm onSubmit={() => this.setState(oldState => {
+            let newState = { ...oldState };
+            newState.submitted = !newState.submitted;
+            return newState;
+          })} />:
+          <div className="app-fb-msg">
+              THANK YOU
+          </div>
+        }
+        
       </div>
     );
   }
