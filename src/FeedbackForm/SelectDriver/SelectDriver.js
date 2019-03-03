@@ -22,7 +22,7 @@ export default class SelectDriver extends Component {
                 key={idx}                   
                 value={driver.id}
               >
-                {`${driver.lname},${driver.fname} (${driver.rating}★)`}                           
+                {`${driver.lname},${driver.fname} (${driver.rating}★/${driver.rides} rides)`}                           
               </option>
             ))
           }
