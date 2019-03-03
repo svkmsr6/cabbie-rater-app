@@ -1,0 +1,14 @@
+.app-fb-rating{
+    background: #8F4F05;
+    border: 5px solid #FEAF3A;
+    border-radius: 20px;
+    height: 65px;
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.app-fb-rating > img {
+    cursor: pointer;
+}

@@ -9,8 +9,8 @@ export default class FeedbackForm extends Component {
     super(props);
     this.state = {
       drivers:[],
-      selected: { id:'' },
-      rating: null
+      selected: null,
+      rating: 0
     };    
   }
 
@@ -26,17 +26,37 @@ export default class FeedbackForm extends Component {
     this.setState(oldState => {
       let newState = {...oldState};
       newState.selected = newState.drivers.find(d => d.id === parseInt(val,10));
-      newState.rating = (newState.selected.rating) || null;
+      //newState.rating = (newState.selected.rating) || null;
       return newState;
     })
   }
 
+  updateRating(rating){
+    this.setState({ rating });
+  }
+
   submitRating(){
+     const {id, rating} = this.state.selected;
+     const newRating = parseFloat(((this.state.rating + rating)/2).toFixed(2), 10);
+     const request = {
+       id,
+       rating: newRating
+     }
+     fetch('http://svk-cabbie-app.herokuapp.com/api/drivers',{
+        method:'PATCH',
+        headers:new Headers({
+          'Content-type':'application/json'
+        }),
+        body: JSON.stringify(request)
+     })
+     .then(resp => resp.json())
+     .then(data => console.log('Rating updated',data))
+     .catch(err => console.log('Update Error', err))
 
   }
 
   render() {
-    const {drivers, selected} = this.state;
+    const {drivers, selected, rating} = this.state;
     return (
       <div className="app-fb-form">
         <header>FEEDBACK FORM</header>
@@ -50,7 +70,10 @@ export default class FeedbackForm extends Component {
               val => this.onHandleChange(val)
             }
           />
-          <RatingBox />
+          <RatingBox 
+             rating={rating}
+             onRate={rating => this.updateRating(rating)}
+          />
         </div>
         <div className="app-fb-btn">
           <button onClick={() => this.submitRating()}>SUBMIT RATING</button>

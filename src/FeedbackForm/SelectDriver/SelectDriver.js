@@ -5,11 +5,16 @@ export default class SelectDriver extends Component {
     return (
         <select 
         //style={{ textColor: (this.state.selected === null)?'black':'grey'}}
-        defaultValue=""
-        value={this.props.selected.id || ''}
+        defaultValue={null}
         onChange={e => this.props.onSelectDriver(e.target.value)}
         >
-          <option selected={!this.props.selected || this.props.selected.id === ''} value={null} disabled>--Select driver--</option>
+          <option 
+            selected={this.props.selected === null} 
+            value={null} 
+            disabled
+         >
+         --Select driver--
+         </option>
           {
             this.props.drivers
             .map((driver,idx) => (
@@ -17,7 +22,7 @@ export default class SelectDriver extends Component {
                 key={idx}                   
                 value={driver.id}
               >
-              {`${driver.lname},${driver.fname}`}
+                {`${driver.lname},${driver.fname} (${driver.rating}★)`}                           
               </option>
             ))
           }
