@@ -86,6 +86,15 @@
   cursor: pointer;
 }
 
+.app-fb-form > .app-fb-btn > button:hover {
+  background: rgb(245, 201, 135);
+}
+
+.app-fb-form > .app-fb-btn > button:active {
+  background: rgb(241, 157, 31);
+  flex: 0 0 261px;
+}
+
 .app-fb-form > .app-fb-btn > button:focus{
   outline: none;
 }

@@ -14,9 +14,13 @@ export default class FeedbackForm extends Component {
     };    
   }
 
+  getAllDrivers(){
+     const fetchPromise = fetch('http://svk-cabbie-app.herokuapp.com/api/drivers')
+     return fetchPromise.then(resp => resp.json());
+  }
+
   componentDidMount(){
-    fetch('http://svk-cabbie-app.herokuapp.com/api/drivers')
-    .then(resp => resp.json())
+    this.getAllDrivers()
     .then(data => this.setState({drivers: data.results}))
     .catch(err => console.log('Fetch Error',err))
   }
@@ -36,6 +40,9 @@ export default class FeedbackForm extends Component {
   }
 
   submitRating(){
+    if(!this.state.selected){
+      alert('Please select a driver!')
+    } else {
      const {id, rating} = this.state.selected;
      const newRating = parseFloat(((this.state.rating + rating)/2).toFixed(2), 10);
      const request = {
@@ -50,8 +57,15 @@ export default class FeedbackForm extends Component {
         body: JSON.stringify(request)
      })
      .then(resp => resp.json())
-     .then(data => console.log('Rating updated',data))
+     .then(data => {
+       console.log('Rating updated',data);
+       this.getAllDrivers()
+        .then(data => this.setState({drivers: data.results}))
+        .catch(err => console.log('Fetch Error',err))
+      })
      .catch(err => console.log('Update Error', err))
+    }
+     
 
   }
 
