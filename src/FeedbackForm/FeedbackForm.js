@@ -19,6 +19,18 @@ export default class FeedbackForm extends Component {
      return fetchPromise.then(resp => resp.json());
   }
 
+  updateDriverRating(request){
+     const fetchPromise = fetch(
+      'http://svk-cabbie-app.herokuapp.com/api/drivers',{
+      method:'PATCH',
+      headers:new Headers({
+        'Content-type':'application/json'
+      }),
+      body: JSON.stringify(request)
+   });
+     return fetchPromise.then(resp => resp.json());
+  }
+
   componentDidMount(){
     this.getAllDrivers()
     .then(data => this.setState({drivers: data.results}))
@@ -49,14 +61,8 @@ export default class FeedbackForm extends Component {
        id,
        rating: newRating
      }
-     fetch('http://svk-cabbie-app.herokuapp.com/api/drivers',{
-        method:'PATCH',
-        headers:new Headers({
-          'Content-type':'application/json'
-        }),
-        body: JSON.stringify(request)
-     })
-     .then(resp => resp.json())
+     
+     this.updateDriverRating(request)
      .then(data => {
        console.log('Rating updated',data);
        this.getAllDrivers()
