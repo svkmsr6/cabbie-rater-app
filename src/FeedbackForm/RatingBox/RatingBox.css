@@ -11,4 +11,5 @@
 
 .app-fb-rating > img {
     cursor: pointer;
+    transition: 0.1s;
 }

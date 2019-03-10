@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import SelectDriver from './SelectDriver/SelectDriver';
 import RatingBox from './RatingBox/RatingBox';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './FeedbackForm.css';
+
+const notify = msg => toast(msg, {
+  position: toast.POSITION.TOP_RIGHT,
+  className: 'app-alert'
+});
 
 export default class FeedbackForm extends Component {
 
@@ -38,11 +45,9 @@ export default class FeedbackForm extends Component {
   }
 
   onHandleChange(val){
-    //hconsole.log(val);
     this.setState(oldState => {
       let newState = {...oldState};
       newState.selected = newState.drivers.find(d => d.id === parseInt(val,10));
-      //newState.rating = (newState.selected.rating) || null;
       return newState;
     })
   }
@@ -53,19 +58,19 @@ export default class FeedbackForm extends Component {
 
   submitRating(){
     if(!this.state.selected){
-      alert('Please select a driver!');
+      notify('Please select a driver!');
     } else if(this.refs.name.value.length === 0 || this.refs.email.value.length === 0){
-      alert('Please ensure a name and an email!');
-    } else if(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(this.refs.email.value)){
-      alert('Please enter a valid email!');
+      notify('Please ensure a name and an email!');
+    } else if(!(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(this.refs.email.value))){
+      notify('Please enter a valid email!');
     } else {
-     const {id, rating, rides} = this.state.selected;
-     const newRating = parseFloat(((rating*rides + this.state.rating)/(rides + 1)).toFixed(2), 10);
-     const request = {
-       id,
-       rating: newRating,
-       rides: rides + 1
-     }
+      const {id, rating, rides} = this.state.selected;
+      const newRating = parseFloat(((rating*rides + this.state.rating)/(rides + 1)).toFixed(2), 10);
+      const request = {
+        id,
+        rating: newRating,
+        rides: rides + 1
+      }
      
      this.updateDriverRating(request)
      .then(data => {
@@ -88,6 +93,7 @@ export default class FeedbackForm extends Component {
     const {drivers, selected, rating} = this.state;
     return (
       <div className="app-fb-form">
+        <ToastContainer />
         <header>FEEDBACK FORM</header>
         <input ref="name" type="text" placeholder="Enter your name" />
         <input ref="email" type="email" placeholder="Enter your mail" />

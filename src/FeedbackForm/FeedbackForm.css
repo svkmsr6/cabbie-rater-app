@@ -33,6 +33,7 @@
     font-size: 24px;
     text-align: center;
     cursor: pointer;
+    outline: none;
 }
 
 .app-fb-form > div.select-rate-container {
@@ -50,7 +51,6 @@
     box-sizing: border-box;
     border-radius: 20px;
     height: 70px;
-    
     font-size: 24px;
     cursor: pointer;
 }
@@ -62,6 +62,12 @@
 .app-fb-form option {
     cursor:pointer;
     text-align: center;
+}
+.app-alert{
+  background: rgb(240, 198, 198);
+  color: rgb(192, 58, 58);
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
 
 .app-fb-form > .app-fb-btn {
