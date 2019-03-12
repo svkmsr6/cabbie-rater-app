@@ -22,13 +22,13 @@ export default class FeedbackForm extends Component {
   }
 
   getAllDrivers(){
-     const fetchPromise = fetch('http://svk-cabbie-app.herokuapp.com/api/drivers')
+     const fetchPromise = fetch('https://svk-cabbie-app.herokuapp.com/api/drivers')
      return fetchPromise.then(resp => resp.json());
   }
 
   updateDriverRating(request){
      const fetchPromise = fetch(
-      'http://svk-cabbie-app.herokuapp.com/api/drivers',{
+      'https://svk-cabbie-app.herokuapp.com/api/drivers',{
       method:'PATCH',
       headers:new Headers({
         'Content-type':'application/json'
