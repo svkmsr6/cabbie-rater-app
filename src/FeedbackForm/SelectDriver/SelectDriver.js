@@ -14,7 +14,7 @@ export default class SelectDriver extends Component {
     return (
       <div 
         style={{
-          display:'flex'
+          position:'relative'
       }}>
         <div 
           className="mac-select-driver-container" 

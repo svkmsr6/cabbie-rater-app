@@ -2,10 +2,14 @@
     background: #8F4F05;
     border: 5px solid #FEAF3A;
     border-radius: 20px;
-    height: 65px;
-    flex: 0 0 30%;
+    width: 65vh;
+    /* -webkit-flex: 0 0 30%; */
+    flex: 0 0 65px;
+    /* display: -webkit-flex; */
     display: flex;
+    /* -webkit-justify-content: space-evenly; */
     justify-content: space-evenly;
+    /* -webkit-align-items: center; */
     align-items: center;
 }
 

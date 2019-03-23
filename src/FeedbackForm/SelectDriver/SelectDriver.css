@@ -6,7 +6,7 @@
 }
 
 .mac-select-driver-container > div.mac-select-driver{
-    flex: 0 0 292px;
+    flex: 0 0 24vw;
     background: #FFFFFF;
     border: 1px solid #FEAF3A;
     box-sizing: border-box;
@@ -17,6 +17,12 @@
     align-items: center;
     font-size: 24px;
 }
+
+@media only screen and (max-width: 600px){
+    .mac-select-driver-container > div.mac-select-driver {
+      font-size: 20px;
+    }
+  }
 
 .mac-select-driver-container > div.mac-select-button{
     flex: 0 0 89px;
@@ -29,11 +35,10 @@
 }
 
 .mac-driver-list{
-    margin-top: 71px;
     background: whitesmoke;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 383px;
+    width: 32vw;
     cursor: pointer;
     transition-property: height;
     position: absolute;
